@@ -1,0 +1,120 @@
+{
+	"info": {
+		"_postman_id": "adc74c15-cc6c-402b-8096-b9282a7641cf",
+		"name": "Finger-Print-Auth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add new Employee",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"employee_Name\": \"diya\",\r\n    \"employee_Age\": 35,\r\n    \"employee_salary\": 154786\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9191/addEmployee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"addEmployee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Employee",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9191/getEmployee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"getEmployee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add teacher",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fingerprint\": \"kouser123\",\r\n    \"name\": \"kouser123\",\r\n    \"usn\": \"1BM231\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9191/api/teachers/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"api",
+						"teachers",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Teacher",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9191/api/teachers/verify/alfiya",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"api",
+						"teachers",
+						"verify",
+						"alfiya"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
