@@ -8,9 +8,9 @@ import com.miniproject.fingerprintauthentication.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.time.LocalDate;
+import java.time.Month;
+import java.util.*;
 
 @Service
 public class StudentSerivce {
@@ -49,6 +49,25 @@ public class StudentSerivce {
         newStudent.setUsn(student.getUsn());
         return studentRepository.save(newStudent);
     }
+
+    public long getTotalRegistration() {
+        return studentRepository.count();
+    }
+
+      public Map<Integer,Integer> getGraphData(){
+          Map<Integer, Integer> monthlyData = new HashMap<>();
+          List<Student> allStudents = studentRepository.findAll();
+          Month currentMonth = LocalDate.now().getMonth();
+          for (Student student : allStudents) {
+              String registrationDate = student.getRegistrationDate(); // Assuming registrationDate is a string in "DD-MM-YYYY" format
+              int registrationMonth = Integer.parseInt(registrationDate.split("-")[1]); // Extract month from registrationDate string
+              int monthDifference = Math.abs(registrationMonth - currentMonth.getValue()); // Calculate difference from current month
+
+              // Update the monthlyData map with the month difference
+              monthlyData.put(monthDifference, monthlyData.getOrDefault(monthDifference, 0) + 1);
+          }
+          return monthlyData;
+      }
 
     /*
        public Optional<Student> findByFingerprint(String fingerprint) {

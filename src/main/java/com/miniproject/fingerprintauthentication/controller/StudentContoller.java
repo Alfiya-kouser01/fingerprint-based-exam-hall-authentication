@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -31,6 +32,20 @@ public class StudentContoller {
         Student newStudent = studentService.registerStudent(student);
         return ResponseEntity.status(HttpStatus.CREATED).body("Student registered: " + newStudent.getName());
     }
+    @GetMapping("/totalregistration")
+    @CrossOrigin(origins = "http://localhost:3000")
+    public ResponseEntity<Long> getTotalRegistration() {
+        long totalRegistration = studentService.getTotalRegistration();
+        return ResponseEntity.ok(totalRegistration);
+    }
+
+   @GetMapping("/graphdata")
+   @CrossOrigin(origins = "http://localhost:3000")
+   public ResponseEntity<Map<Integer, Integer>> getGraphData() {
+       Map<Integer, Integer> graphData = studentService.getGraphData();
+       return ResponseEntity.ok(graphData);
+   }
+
     /*
     @GetMapping("/verify/{fingerprint}")
     public ResponseEntity<String> verifyStudent(@PathVariable String fingerprint) {
